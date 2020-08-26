@@ -20,7 +20,7 @@ export default new VueRouter({
             component: Contact
         },
         {
-            path: "/AboutAs",
+            path: "/AboutUs",
             component: AboutUs
         }
     ]
