@@ -19,15 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dd29684-60be-4120-a581-58227a2749ab" name="Default Changelist" comment="">
+    <list default="true" id="5dd29684-60be-4120-a581-58227a2749ab" name="Default Changelist" comment="add pizza table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/pizzaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/pizzaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/pizzaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/pizzaSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/pages/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/pages/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +186,9 @@
       <updated>1598383056789</updated>
       <workItem from="1598383058304" duration="6931000" />
       <workItem from="1598451705098" duration="1518000" />
-      <workItem from="1598454201518" duration="10463000" />
+      <workItem from="1598454201518" duration="11235000" />
+      <workItem from="1598502363666" duration="7242000" />
+      <workItem from="1598533456490" duration="2423000" />
     </task>
     <servers />
   </component>
@@ -205,6 +205,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add pizza table" />
+    <option name="LAST_COMMIT_MESSAGE" value="add pizza table" />
   </component>
   <component name="WindowStateProjectService">
     <state x="582" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598456935964">
@@ -215,6 +220,10 @@
       <screen x="54" y="27" width="1866" height="1053" />
     </state>
     <state x="720" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/54.27.1866.1053@54.27.1866.1053" timestamp="1598385754632" />
+    <state x="231" y="121" width="1492" height="879" key="DiffContextDialog" timestamp="1598469202473">
+      <screen x="54" y="27" width="1866" height="1053" />
+    </state>
+    <state x="231" y="121" width="1492" height="879" key="DiffContextDialog/54.27.1866.1053@54.27.1866.1053" timestamp="1598469202473" />
     <state width="1253" height="275" key="GridCell.Tab.0.bottom" timestamp="1598459337598">
       <screen x="54" y="27" width="1866" height="1053" />
     </state>
@@ -231,6 +240,10 @@
       <screen x="54" y="27" width="1866" height="1053" />
     </state>
     <state width="1253" height="275" key="GridCell.Tab.0.right/54.27.1866.1053@54.27.1866.1053" timestamp="1598459337598" />
+    <state x="582" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1598469217475">
+      <screen x="54" y="27" width="1866" height="1053" />
+    </state>
+    <state x="582" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/54.27.1866.1053@54.27.1866.1053" timestamp="1598469217475" />
     <state x="838" y="294" width="287" height="525" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598459301884">
       <screen x="54" y="27" width="1866" height="1053" />
     </state>

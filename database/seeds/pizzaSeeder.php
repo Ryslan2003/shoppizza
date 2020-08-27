@@ -12,7 +12,7 @@ class pizzaSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i<=10; $i++) {
+        for ($i = 1; $i<=30; $i++) {
             DB::table('pizza')->insert([
                 'title' => "Пицца".$i,
                 'description' => "Описание".$i,

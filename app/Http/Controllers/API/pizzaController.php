@@ -16,7 +16,7 @@ class pizzaController extends Controller
     public function index()
     {
         return response()->json([
-           'name' => pizza::all()
+           'name' => pizza::paginate(9)
         ]);
     }
 

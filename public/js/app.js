@@ -2001,27 +2001,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       loading: true,
       errorLoading: false,
-      pizza: ''
+      pizza: '',
+      last_page: '',
+      next_page_url: '',
+      prev_page_url: ''
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    getPosts: function getPosts(page_url) {
+      var _this = this;
 
-    setTimeout(function () {
-      axios.get('http://127.0.0.1:8000/api/pizza').then(function (res) {
-        console.log(res.data.name);
-        _this.pizza = res.data.name;
+      page_url = page_url || 'http://127.0.0.1:8000/api/pizza';
+      axios.get(page_url).then(function (res) {
+        _this.loading = true;
+        console.log(res);
+        _this.last_page = res.data.name.last_page;
+        _this.next_page_url = res.data.name.next_page_url;
+        _this.prev_page_url = res.data.name.prev_page_url;
+        console.log(_this.next_page_url + " " + _this.prev_page_url);
+        _this.pizza = res.data.name.data;
       })["catch"](function () {
         _this.errorLoading = true;
       })["finally"](function () {
         _this.loading = false;
       });
-    }, 1000);
+    }
+  },
+  mounted: function mounted() {
+    this.getPosts();
   }
 });
 
@@ -6488,7 +6520,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.marginbot[data-v-a9aac016]{\n    margin-bottom: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.marginbot[data-v-a9aac016]{\n    margin-bottom: 40px;\n}\n.lds-roller[data-v-a9aac016] {\n    display: inline-block;\n    position: relative;\n    width: 80px;\n    height: 80px;\n}\n.lds-roller div[data-v-a9aac016] {\n    -webkit-animation: lds-roller-data-v-a9aac016 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n            animation: lds-roller-data-v-a9aac016 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n    transform-origin: 40px 40px;\n}\n.lds-roller div[data-v-a9aac016]:after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    width: 7px;\n    height: 7px;\n    border-radius: 50%;\n    background: black;\n    margin: -4px 0 0 -4px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(1) {\n    -webkit-animation-delay: -0.036s;\n            animation-delay: -0.036s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(1):after {\n    top: 63px;\n    left: 63px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(2) {\n    -webkit-animation-delay: -0.072s;\n            animation-delay: -0.072s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(2):after {\n    top: 68px;\n    left: 56px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(3) {\n    -webkit-animation-delay: -0.108s;\n            animation-delay: -0.108s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(3):after {\n    top: 71px;\n    left: 48px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(4) {\n    -webkit-animation-delay: -0.144s;\n            animation-delay: -0.144s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(4):after {\n    top: 72px;\n    left: 40px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(5) {\n    -webkit-animation-delay: -0.18s;\n            animation-delay: -0.18s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(5):after {\n    top: 71px;\n    left: 32px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(6) {\n    -webkit-animation-delay: -0.216s;\n            animation-delay: -0.216s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(6):after {\n    top: 68px;\n    left: 24px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(7) {\n    -webkit-animation-delay: -0.252s;\n            animation-delay: -0.252s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(7):after {\n    top: 63px;\n    left: 17px;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(8) {\n    -webkit-animation-delay: -0.288s;\n            animation-delay: -0.288s;\n}\n.lds-roller div[data-v-a9aac016]:nth-child(8):after {\n    top: 56px;\n    left: 12px;\n}\n@-webkit-keyframes lds-roller-data-v-a9aac016 {\n0% {\n        transform: rotate(0deg);\n}\n100% {\n        transform: rotate(360deg);\n}\n}\n@keyframes lds-roller-data-v-a9aac016 {\n0% {\n        transform: rotate(0deg);\n}\n100% {\n        transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -38358,47 +38390,160 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", [_vm._v("home")]),
-      _vm._v(" "),
       _vm.errorLoading
         ? _c("div", [_vm._v("ошибка")])
         : [
             _vm.loading
-              ? _c("h3", [_vm._v("Загружаеться....")])
+              ? _c("div", { staticClass: "container" }, [_vm._m(0)])
               : [
                   _c("div", { staticClass: "container" }, [
                     _c(
                       "div",
                       { staticClass: "row marginbot" },
-                      _vm._l(_vm.pizza, function(pizz) {
-                        return _c(
-                          "div",
-                          { staticClass: "card col-3 offset-1 marginbot" },
-                          [
-                            _c("h5", { staticClass: "card-title" }, [
-                              _vm._v(_vm._s(pizz.title))
-                            ]),
-                            _vm._v(" "),
-                            _c("img", {
-                              staticClass: "card-img-top",
-                              attrs: {
-                                src:
-                                  "https://i.artfile.ru/2400x1600_802916_[www.ArtFile.ru].jpg",
-                                alt: "Card image cap"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("h2", [_vm._v(_vm._s(pizz.price) + " РУБ")]),
+                      [
+                        _vm._l(_vm.pizza, function(pizz) {
+                          return _c(
+                            "div",
+                            { staticClass: "card col-3 offset-1 marginbot" },
+                            [
+                              _c("h5", { staticClass: "card-title" }, [
+                                _vm._v(_vm._s(pizz.title))
+                              ]),
                               _vm._v(" "),
-                              _c("p", { staticClass: "card-text" }, [
-                                _vm._v(_vm._s(pizz.description))
+                              _c("img", {
+                                staticClass: "card-img-top",
+                                attrs: {
+                                  src:
+                                    "https://i.artfile.ru/2400x1600_802916_[www.ArtFile.ru].jpg",
+                                  alt: "Card image cap"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c("h2", [_vm._v(_vm._s(pizz.price) + " Руб")]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "card-text" }, [
+                                  _vm._v(_vm._s(pizz.description))
+                                ])
                               ])
-                            ])
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "nav",
+                          {
+                            staticStyle: { margin: "0 auto" },
+                            attrs: { "aria-label": "Page navigation" }
+                          },
+                          [
+                            _c(
+                              "ul",
+                              { staticClass: "pagination" },
+                              [
+                                _c(
+                                  "li",
+                                  {
+                                    staticClass: "page-item",
+                                    class: { disabled: !_vm.prev_page_url }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "page-link",
+                                        attrs: {
+                                          href: "#",
+                                          "aria-label": "Previous"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.getPosts(
+                                              _vm.prev_page_url
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { attrs: { "aria-hidden": "true" } },
+                                          [_vm._v("«")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", { staticClass: "sr-only" }, [
+                                          _vm._v("Previous")
+                                        ])
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.last_page, function(page) {
+                                  return _c(
+                                    "li",
+                                    { staticClass: "page-item" },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "page-link",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.getPosts(
+                                                "http://127.0.0.1:8000/api/pizza?page=" +
+                                                  page
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [_vm._v(_vm._s(page))]
+                                      )
+                                    ]
+                                  )
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "li",
+                                  {
+                                    staticClass: "page-item",
+                                    class: { disabled: !_vm.next_page_url }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "page-link",
+                                        attrs: { "aria-label": "Next" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.getPosts(
+                                              _vm.next_page_url
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { attrs: { "aria-hidden": "true" } },
+                                          [_vm._v("»")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", { staticClass: "sr-only" }, [
+                                          _vm._v("Next")
+                                        ])
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ],
+                              2
+                            )
                           ]
                         )
-                      }),
-                      0
+                      ],
+                      2
                     )
                   ])
                 ]
@@ -38407,7 +38552,32 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "lds-roller",
+          staticStyle: { margin: "0 auto", "margin-top": "300px" }
+        },
+        [
+          _c("div"),
+          _c("div"),
+          _c("div"),
+          _c("div"),
+          _c("div"),
+          _c("div"),
+          _c("div"),
+          _c("div")
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
